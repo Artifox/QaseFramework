@@ -2,7 +2,7 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
-import pages.WelcomePage;
+import pageobjects.WelcomePage;
 
 public class BaseTest {
 

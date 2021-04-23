@@ -1,4 +1,4 @@
-package pages;
+package pageobjects;
 
 import com.codeborne.selenide.Selenide;
 import com.codeborne.selenide.SelenideElement;
@@ -13,7 +13,7 @@ public class WelcomePage {
         Selenide.open("/");
         return this;
     }
-    public LoginPage pressLoginButton(){
+    public LoginPage  pressLoginButton(){
         loginButton.click();
         return new LoginPage();
     }
