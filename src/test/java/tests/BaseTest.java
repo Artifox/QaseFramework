@@ -2,11 +2,13 @@ package tests;
 
 import com.codeborne.selenide.Configuration;
 import org.testng.annotations.BeforeClass;
+import pageobjects.LoginPage;
 import pageobjects.WelcomePage;
+import steps.LoginSteps;
 
 public class BaseTest {
 
-    WelcomePage welcomePage;
+    LoginSteps loginSteps;
 
     @BeforeClass
     public void setup() {
@@ -14,6 +16,6 @@ public class BaseTest {
         Configuration.baseUrl = "https://qase.io";
         Configuration.holdBrowserOpen = true;
 
-        welcomePage = new WelcomePage();
+        loginSteps = new LoginSteps();
     }
 }
