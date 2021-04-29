@@ -1,11 +1,7 @@
 package steps;
 
-import com.codeborne.selenide.Condition;
 import io.qameta.allure.Step;
 import pageobjects.LoginPage;
-import pageobjects.ProjectsPage;
-
-import static com.codeborne.selenide.Condition.visible;
 
 public class LoginSteps {
 
@@ -17,12 +13,12 @@ public class LoginSteps {
         loginPage = new LoginPage();
     }
 
-    @Step("Login by user: {email}")
-    public ProjectSteps login(String email, String password) {
+    @Step("Logging in by user: {email}")
+    public void login(String email, String password) {
         loginPage
                 .open()
-                .successfulLogin(email, password);
-        return new ProjectSteps();
+                .successfulLogin(email, password)
+                .isOpened();
     }
 
 }

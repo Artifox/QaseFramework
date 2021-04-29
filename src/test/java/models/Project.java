@@ -7,5 +7,9 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
-public class TestRun {
+public class Project {
+    String name;
+    String code;
+    String description;
+    ProjectAccessType accessType;
 }

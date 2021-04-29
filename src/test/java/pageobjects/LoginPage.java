@@ -15,10 +15,10 @@ public class LoginPage extends BasePage{
         new Button("Login").click();
         return this;
     }
-    @Step("Filling login form: email - {email}, password - {password}")
-    public ProjectsPage successfulLogin(String email, String password){
+    @Step("Filling login form")
+    public ProjectsListPage successfulLogin(String email, String password){
         errorLogin(email, password);
-        return new ProjectsPage();
+        return new ProjectsListPage();
     }
 
     //Todo: Можно ли здесь возвращать страницу или лучше булин?
