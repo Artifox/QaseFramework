@@ -9,11 +9,12 @@ public class WelcomePage {
 
     private SelenideElement loginButton = $("#signin");
 
-    public WelcomePage open(){
+    public WelcomePage open() {
         Selenide.open("/");
         return this;
     }
-    public LoginPage  pressLoginButton(){
+
+    public LoginPage pressLoginButton() {
         loginButton.click();
         return new LoginPage();
     }

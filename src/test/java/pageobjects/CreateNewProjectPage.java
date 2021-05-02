@@ -17,6 +17,7 @@ public class CreateNewProjectPage extends BasePage {
         return new CreateNewProjectPage();
     }
 
+    //TODO: Implement createNewProject method with 4 parameters
     public ProjectPage createNewProject(String projectName, String projectCode, String description, ProjectAccessType accessType) {
         this.createNewProject(projectName, projectCode);
         return new ProjectPage();

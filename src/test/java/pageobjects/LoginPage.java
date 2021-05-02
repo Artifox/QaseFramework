@@ -7,16 +7,17 @@ import wrappers.Input;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class LoginPage extends BasePage{
+public class LoginPage extends BasePage {
 
-    public LoginPage errorLogin(String email, String password){
+    public LoginPage errorLogin(String email, String password) {
         new Input("Email").write(email);
         new Input("Password").write(password);
         new Button("Login").click();
         return this;
     }
+
     @Step("Filling login form")
-    public ProjectsListPage successfulLogin(String email, String password){
+    public ProjectsListPage successfulLogin(String email, String password) {
         errorLogin(email, password);
         return new ProjectsListPage();
     }

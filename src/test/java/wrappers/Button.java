@@ -8,15 +8,15 @@ public class Button {
     String label;
     String locator = "//*[contains(@class, 'btn') and contains(text(), '%s')]";
 
-    public Button (String label){
+    public Button(String label) {
         this.label = label;
     }
 
-    public void click(){
+    public void click() {
         $x(String.format(locator, label)).click();
     }
 
-    public void shouldBe(Condition condition){
+    public void shouldBe(Condition condition) {
         $x(String.format(locator, label)).shouldBe(condition);
     }
 }

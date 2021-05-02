@@ -1,4 +1,5 @@
 package pageobjects;
+
 //in test runs
 public class BaseModalPage extends AbstractPage {
 

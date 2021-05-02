@@ -8,7 +8,7 @@ import models.Project;
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class ProjectsListPage extends BasePage{
+public class ProjectsListPage extends BasePage {
 
     private SelenideElement createNewProjectButton = $("#createButton");
     private String projectNameLocator = "//a[@href='/project/%s']";
@@ -25,15 +25,16 @@ public class ProjectsListPage extends BasePage{
         return this;
     }
 
-    public CreateNewProjectPage pressCreateNewProjectButton(){
+    public CreateNewProjectPage pressCreateNewProjectButton() {
         createNewProjectButton.click();
         return new CreateNewProjectPage();
     }
+
     //Todo: Возвращать булин или пэйджу?
-    public ProjectsListPage isProjectExist(Project project){
+    public ProjectsListPage isProjectExist(Project project) {
         String projectName = project.getName();
         projectName = projectName.toUpperCase();
-        projectName = projectName.substring(0,10);
+        projectName = projectName.substring(0, 10);
         $x(String.format(projectNameLocator, projectName)).shouldBe(Condition.visible);
         return this;
     }
