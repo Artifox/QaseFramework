@@ -6,7 +6,7 @@
     </listeners>
     <test name="RetryMultiple">
         <classes>
-            <class name="tests.LoginTest" />
+            <class name="tests.LoginTest"/>
         </classes>
     </test> <!-- Test -->
 </suite>

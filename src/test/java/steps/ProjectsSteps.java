@@ -22,7 +22,7 @@ public class ProjectsSteps {
         projectsListPage
                 .open()
                 .pressCreateNewProjectButton()
-                .createNewProject(project.getName(), project.getCode());
+                .createNewProject(project);
         return this;
     }
 

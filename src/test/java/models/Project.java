@@ -11,5 +11,5 @@ public class Project {
     String name;
     String code;
     String description;
-    ProjectAccessType accessType;
+    String accessType;
 }

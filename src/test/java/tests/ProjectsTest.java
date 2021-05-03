@@ -3,18 +3,18 @@ package tests;
 import models.Project;
 import org.testng.annotations.Test;
 
-import static models.ProjectAccessType.PUBLIC;
+import static models.RadioButtonOptions.CreateNewProjectOptions.PRIVATE;
 
 public class ProjectsTest extends BaseTest {
 
     @Test
     public void projectShouldBeCreated() {
-        //Todo: как создать класс по созданию проектов и отдавать сюда готовый?
+        //Todo: создать класс по созданию проектов и отдавать сюда готовый
         Project project = Project.builder()
-                .name("projectName")
-                .code("projectCode")
-                .description("description")
-                .accessType(PUBLIC)
+                .name(fakeValuesService.regexify("[a-z1-9]{10}"))
+                .code(fakeValuesService.regexify("[a-z1-9]{10}"))
+                .description(fakeValuesService.regexify("[a-z1-9]{10}"))
+                .accessType(PRIVATE)
                 .build();
 
         loginSteps
