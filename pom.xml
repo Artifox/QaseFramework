@@ -11,7 +11,7 @@
     <properties>
         <maven.compiler.source>11</maven.compiler.source>
         <maven.compiler.target>11</maven.compiler.target>
-        <aspectj.version>1.9.6</aspectj.version>
+        <!--<aspectj.version>1.9.6</aspectj.version>-->
     </properties>
 
     <build>
@@ -22,7 +22,7 @@
                 <version>3.0.0-M5</version>
                 <configuration>
                     <argLine>
-                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar
+                        -javaagent:${settings.localRepository}/org/aspectj/aspectjweaver/1.9.6/aspectjweaver-1.9.6.jar
                         -Xmx256m
                     </argLine>
                 </configuration>
@@ -30,7 +30,7 @@
                     <dependency>
                         <groupId>org.aspectj</groupId>
                         <artifactId>aspectjweaver</artifactId>
-                        <version>${aspectj.version}</version>
+                        <version>1.9.6</version>
                     </dependency>
                 </dependencies>
             </plugin>
@@ -75,6 +75,4 @@
             <version>2.14.1</version>
         </dependency>
     </dependencies>
-
-
 </project>
