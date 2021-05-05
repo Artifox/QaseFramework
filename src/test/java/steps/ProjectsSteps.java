@@ -9,12 +9,10 @@ import pageobjects.ProjectsListPage;
 public class ProjectsSteps {
     CreateNewProjectPage createNewProjectPage;
     ProjectsListPage projectsListPage;
-    ProjectPage projectPage;
 
     public ProjectsSteps() {
         createNewProjectPage = new CreateNewProjectPage();
         projectsListPage = new ProjectsListPage();
-        projectPage = new ProjectPage();
     }
 
     @Step
