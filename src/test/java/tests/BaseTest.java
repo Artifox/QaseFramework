@@ -7,6 +7,7 @@ import org.testng.annotations.BeforeSuite;
 import org.testng.annotations.Listeners;
 import steps.LoginSteps;
 import steps.ProjectsSteps;
+import steps.RepositorySteps;
 import utils.TestListener;
 
 import java.util.Locale;
@@ -18,6 +19,7 @@ public class BaseTest {
     FakeValuesService fakeValuesService;
     LoginSteps loginSteps;
     ProjectsSteps projectsSteps;
+    RepositorySteps repositorySteps;
 
     @BeforeSuite
     public void setup() {
@@ -26,9 +28,13 @@ public class BaseTest {
         Configuration.holdBrowserOpen = true;
         loginSteps = new LoginSteps();
         projectsSteps = new ProjectsSteps();
+        repositorySteps = new RepositorySteps();
 
         fakeValuesService = new FakeValuesService(
                 new Locale("en-GB"), new RandomService());
+
+        loginSteps
+                .login(EMAIL, PASSWORD);
 
     }
 }

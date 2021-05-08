@@ -2,17 +2,16 @@ package steps;
 
 import io.qameta.allure.Step;
 import models.Project;
-import pageobjects.CreateNewProjectPage;
-import pageobjects.ProjectPage;
+import pageobjects.ProjectSettingsPage;
 import pageobjects.ProjectsListPage;
 
 public class ProjectsSteps {
-    CreateNewProjectPage createNewProjectPage;
     ProjectsListPage projectsListPage;
+    ProjectSettingsPage projectSettingsPage;
 
     public ProjectsSteps() {
-        createNewProjectPage = new CreateNewProjectPage();
         projectsListPage = new ProjectsListPage();
+        projectSettingsPage = new ProjectSettingsPage();
     }
 
     @Step
@@ -29,6 +28,30 @@ public class ProjectsSteps {
         projectsListPage
                 .open()
                 .isProjectExist(project);
+        return this;
+    }
+
+    @Step
+    public ProjectsSteps validateIsProjectUpdated(Project project, Project project2) {
+        validateIsProjectCreated(project2);
+        projectsListPage
+                .isProjectNotExist(project);
+        return this;
+    }
+
+    @Step
+    public void deleteProject(Project project) {
+        projectsListPage
+                .open()
+                .findProjectAndPressDeleteButton(project)
+                .confirmDeleting();
+    }
+
+    @Step
+    public ProjectsSteps editProject(Project project, Project project2) {
+        projectSettingsPage
+                .open(project.getCode())
+                .editProject(project2);
         return this;
     }
 }

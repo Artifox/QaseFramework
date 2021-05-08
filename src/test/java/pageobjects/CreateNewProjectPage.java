@@ -23,13 +23,17 @@ public class CreateNewProjectPage extends BasePage {
         return new CreateNewProjectPage();
     }
 
-    public ProjectPage createNewProject(Project project) {
+    public RepositoryPage createNewProject(Project project) {
         new Input("Project name").write(project.getName());
-        new Input("Project Code").write(project.getCode());
+        new Input("Project Code").clear().write(project.getCode());
         new TextArea("Description").write(project.getDescription());
         new RadioButton(project.getAccessType()).setRadioButton();
         new Button("Create project").click();
-        return new ProjectPage();
+        return new RepositoryPage();
+    }
+
+    private void clearProjectCode() {
+
     }
 
 }

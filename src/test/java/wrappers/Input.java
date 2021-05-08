@@ -11,7 +11,13 @@ public class Input {
         this.label = label;
     }
 
-    public void write(String text) {
+    public Input write(String text) {
         $x(String.format(locator, label)).shouldBe(visible).sendKeys(text);
+        return this;
+    }
+
+    public Input clear() {
+        $x(String.format(locator, label)).shouldBe(visible).clear();
+        return this;
     }
 }
