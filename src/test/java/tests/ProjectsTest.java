@@ -2,26 +2,20 @@ package tests;
 
 import models.Project;
 import org.testng.annotations.Test;
-
-import static models.ProjectAccessType.PUBLIC;
+import utils.ProjectFactory;
 
 public class ProjectsTest extends BaseTest {
 
     @Test
-    public void projectShouldBeCreated() {
-        //Todo: как создать класс по созданию проектов и отдавать сюда готовый?
-        Project project = Project.builder()
-                .name("projectName")
-                .code("projectCode")
-                .description("description")
-                .accessType(PUBLIC)
-                .build();
+    public void projectCRUD() {
+        ProjectFactory projectsFactory = new ProjectFactory();
+        Project project = projectsFactory.getProject();
 
-        loginSteps
-                .login(EMAIL, PASSWORD);
         projectsSteps
                 .createNewProject(project)
-                .validateIsProjectCreated(project);
+                .updateProject(project.getCode(), project = projectsFactory.getProject())
+                .validateProjectFields(project.getCode(), project)
+                .deleteProject(project.getName());
     }
 }
 

@@ -22,7 +22,6 @@ public class LoginPage extends BasePage {
         return new ProjectsListPage();
     }
 
-    //Todo: Можно ли здесь возвращать страницу или лучше булин?
     @Override
     public LoginPage isOpened() {
         new Button("Login").shouldBe(visible);

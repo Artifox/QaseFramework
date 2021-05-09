@@ -1,14 +1,20 @@
 package pageobjects;
 
 import com.codeborne.selenide.Selenide;
-import models.ProjectAccessType;
+import models.Project;
 import wrappers.Button;
 import wrappers.Input;
+import wrappers.RadioButton;
+import wrappers.TextArea;
+
+import static com.codeborne.selenide.Condition.visible;
 
 public class CreateNewProjectPage extends BasePage {
+
     @Override
-    public AbstractPage isOpened() {
-        return null;
+    public CreateNewProjectPage isOpened() {
+        new Button("Create project").shouldBe(visible);
+        return this;
     }
 
     @Override
@@ -17,16 +23,17 @@ public class CreateNewProjectPage extends BasePage {
         return new CreateNewProjectPage();
     }
 
-    //TODO: Implement createNewProject method with 4 parameters
-    public ProjectPage createNewProject(String projectName, String projectCode, String description, ProjectAccessType accessType) {
-        this.createNewProject(projectName, projectCode);
-        return new ProjectPage();
+    public RepositoryPage createNewProject(Project project) {
+        new Input("Project name").write(project.getName());
+        new Input("Project Code").clear().write(project.getCode());
+        new TextArea("Description").write(project.getDescription());
+        new RadioButton(project.getAccessType()).setRadioButton();
+        new Button("Create project").click();
+        return new RepositoryPage();
     }
 
-    public ProjectPage createNewProject(String projectName, String projectCode) {
-        new Input("Project name").write(projectName);
-        new Input("Project Code").write(projectCode);
-        new Button("Create project").click();
-        return new ProjectPage();
+    private void clearProjectCode() {
+
     }
+
 }

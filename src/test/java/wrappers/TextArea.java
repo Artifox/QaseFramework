@@ -5,20 +5,19 @@ import com.codeborne.selenide.Condition;
 import static com.codeborne.selenide.Condition.visible;
 import static com.codeborne.selenide.Selenide.$x;
 
-public class Input {
+public class TextArea {
     String label;
-    String locator = "//*[contains(text(), '%s')]/following-sibling::input";
+    String locator = "//*[contains(text(), '%s')]/following-sibling::textarea";
 
-    public Input(String label) {
+    public TextArea(String label) {
         this.label = label;
     }
 
-    public Input write(String text) {
-        $x(String.format(locator, label)).shouldBe(visible).sendKeys(text);
-        return this;
+    public void write(String text) {
+        $x(String.format(locator, label)).sendKeys(text);
     }
 
-    public Input clear() {
+    public TextArea clear() {
         $x(String.format(locator, label)).shouldBe(visible).clear();
         return this;
     }

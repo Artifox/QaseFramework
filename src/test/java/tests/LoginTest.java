@@ -1,6 +1,5 @@
 package tests;
 
-import org.testng.Assert;
 import org.testng.annotations.Test;
 
 public class LoginTest extends BaseTest {
@@ -11,9 +10,9 @@ public class LoginTest extends BaseTest {
                 .login(EMAIL, PASSWORD);
     }
 
-    @Test
+    /*@Test
     public void failTest() {
         loginSteps.login(EMAIL, PASSWORD);
         Assert.fail();
-    }
+    }*/
 }

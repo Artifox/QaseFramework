@@ -2,19 +2,16 @@ package steps;
 
 import io.qameta.allure.Step;
 import models.Project;
-import pageobjects.CreateNewProjectPage;
-import pageobjects.ProjectPage;
+import pageobjects.ProjectSettingsPage;
 import pageobjects.ProjectsListPage;
 
 public class ProjectsSteps {
-    CreateNewProjectPage createNewProjectPage;
     ProjectsListPage projectsListPage;
-    ProjectPage projectPage;
+    ProjectSettingsPage projectSettingsPage;
 
     public ProjectsSteps() {
-        createNewProjectPage = new CreateNewProjectPage();
         projectsListPage = new ProjectsListPage();
-        projectPage = new ProjectPage();
+        projectSettingsPage = new ProjectSettingsPage();
     }
 
     @Step
@@ -22,15 +19,41 @@ public class ProjectsSteps {
         projectsListPage
                 .open()
                 .pressCreateNewProjectButton()
-                .createNewProject(project.getName(), project.getCode());
+                .createNewProject(project);
         return this;
     }
-
-    @Step
+    //TODO: Instead of that method validaterojectFields() has been implemented below
+    // Remove after approving
+   /* @Step
     public ProjectsSteps validateIsProjectCreated(Project project) {
         projectsListPage
                 .open()
                 .isProjectExist(project);
+        return this;
+    }*/
+
+    @Step
+    public ProjectsSteps validateProjectFields(String sourceProject, Project project) {
+        projectSettingsPage
+                .open(sourceProject)
+                .validateProjectSettings(project);
+        return this;
+    }
+
+    @Step
+    public ProjectsSteps deleteProject(String projectName) {
+        projectsListPage
+                .open()
+                .findProjectAndPressDeleteButton(projectName)
+                .confirmDeleting();
+        return this;
+    }
+
+    @Step
+    public ProjectsSteps updateProject(String sourceProject, Project project2) {
+        projectSettingsPage
+                .open(sourceProject)
+                .editProject(project2);
         return this;
     }
 }

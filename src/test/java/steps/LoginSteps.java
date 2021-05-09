@@ -7,8 +7,6 @@ public class LoginSteps {
 
     LoginPage loginPage;
 
-
-    //Todo: Инициализировать пэйджи в конструкторе или в методе?
     public LoginSteps() {
         loginPage = new LoginPage();
     }

@@ -7,9 +7,8 @@ import lombok.Data;
 @Data
 @AllArgsConstructor
 @Builder
-public class Project {
+public class Suite {
     String name;
-    String code;
     String description;
-    String accessType;
+    String preconditions;
 }

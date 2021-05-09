@@ -2,20 +2,21 @@ package pageobjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import com.codeborne.selenide.SelenideElement;
 import models.Project;
+import wrappers.Button;
 
-import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.$x;
 
 public class ProjectsListPage extends BasePage {
 
-    private SelenideElement createNewProjectButton = $("#createButton");
-    private String projectNameLocator = "//a[@href='/project/%s']";
+    private String projectNameLabel = "//table[contains(@class,'table')]//*[contains(text(), '%s')]";
+    private String threeDotsButton = "//*[contains(text(),'%s')]/parent::div/parent::td/following-sibling::td[@class='text-end']/descendant::a[contains(@class, 'btn')]";
+    private String deleteDropdownOption = "//*[contains(text(),'%s')]/parent::div/parent::td/following-sibling::td[@class='text-end']/descendant::div[contains(@class, 'dropdown-menu')]/descendant::a[contains(text(), 'Delete')]";
+    private String settingsDropdownOption = "//*[contains(text(),'%s')]/parent::div/parent::td/following-sibling::td[@class='text-end']/descendant::div[contains(@class, 'dropdown-menu')]/descendant::a[contains(text(), 'Settings')]";
 
     @Override
     public ProjectsListPage isOpened() {
-        createNewProjectButton.shouldBe(Condition.visible);
+        new Button("Create new project").shouldBe(Condition.visible);
         return this;
     }
 
@@ -26,16 +27,39 @@ public class ProjectsListPage extends BasePage {
     }
 
     public CreateNewProjectPage pressCreateNewProjectButton() {
-        createNewProjectButton.click();
+        new Button("Create new project").click();
         return new CreateNewProjectPage();
     }
 
-    //Todo: Возвращать булин или пэйджу?
     public ProjectsListPage isProjectExist(Project project) {
-        String projectName = project.getName();
-        projectName = projectName.toUpperCase();
-        projectName = projectName.substring(0, 10);
-        $x(String.format(projectNameLocator, projectName)).shouldBe(Condition.visible);
+        $x(String.format(projectNameLabel, project.getName())).shouldBe(Condition.visible);
+        return this;
+    }
+
+    public ProjectsListPage isProjectNotExist(Project project) {
+        $x(String.format(projectNameLabel, project.getName())).shouldNotBe(Condition.visible);
+        return this;
+    }
+
+    public DeleteConfirmationPage findProjectAndPressDeleteButton(String projectName) {
+        findProjectAndPressThreeDotsButton(projectName);
+        $x(String.format(deleteDropdownOption, projectName)).click();
+        return new DeleteConfirmationPage();
+    }
+
+    public RepositoryPage openProject(String projectName) {
+        $x(String.format(projectNameLabel, projectName)).click();
+        return new RepositoryPage();
+    }
+
+    public void findProjectAndPressSettingsButton(String projectName) {
+        findProjectAndPressThreeDotsButton(projectName);
+        $x(String.format(deleteDropdownOption, projectName)).click();
+
+    }
+
+    public ProjectsListPage findProjectAndPressThreeDotsButton(String projectName) {
+        $x(String.format(threeDotsButton, projectName)).click();
         return this;
     }
 }
