@@ -16,7 +16,6 @@ import java.util.Locale;
 public class BaseTest {
     public static final String EMAIL = "qasetestako@mailinator.com";
     public static final String PASSWORD = "qasetestako@mailinator.com";
-    FakeValuesService fakeValuesService;
     LoginSteps loginSteps;
     ProjectsSteps projectsSteps;
     RepositorySteps repositorySteps;
@@ -29,9 +28,6 @@ public class BaseTest {
         loginSteps = new LoginSteps();
         projectsSteps = new ProjectsSteps();
         repositorySteps = new RepositorySteps();
-
-        fakeValuesService = new FakeValuesService(
-                new Locale("en-GB"), new RandomService());
 
         loginSteps
                 .login(EMAIL, PASSWORD);

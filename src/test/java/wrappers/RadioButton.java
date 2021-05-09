@@ -1,5 +1,7 @@
 package wrappers;
 
+import com.codeborne.selenide.Condition;
+
 import static com.codeborne.selenide.Selenide.$x;
 
 public class RadioButton {
@@ -12,5 +14,9 @@ public class RadioButton {
 
     public void setRadioButton() {
         $x(String.format(locator, option)).click();
+    }
+
+    public void shouldBe(Condition selected) {
+        $x(String.format(locator, option)).shouldBe(selected);
     }
 }

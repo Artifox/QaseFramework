@@ -22,35 +22,37 @@ public class ProjectsSteps {
                 .createNewProject(project);
         return this;
     }
-
-    @Step
+    //TODO: Instead of that method validaterojectFields() has been implemented below
+    // Remove after approving
+   /* @Step
     public ProjectsSteps validateIsProjectCreated(Project project) {
         projectsListPage
                 .open()
                 .isProjectExist(project);
         return this;
-    }
+    }*/
 
     @Step
-    public ProjectsSteps validateIsProjectUpdated(Project project, Project project2) {
-        validateIsProjectCreated(project2);
-        projectsListPage
-                .isProjectNotExist(project);
+    public ProjectsSteps validateProjectFields(String sourceProject, Project project) {
+        projectSettingsPage
+                .open(sourceProject)
+                .validateProjectSettings(project);
         return this;
     }
 
     @Step
-    public void deleteProject(Project project) {
+    public ProjectsSteps deleteProject(String projectName) {
         projectsListPage
                 .open()
-                .findProjectAndPressDeleteButton(project)
+                .findProjectAndPressDeleteButton(projectName)
                 .confirmDeleting();
+        return this;
     }
 
     @Step
-    public ProjectsSteps editProject(Project project, Project project2) {
+    public ProjectsSteps updateProject(String sourceProject, Project project2) {
         projectSettingsPage
-                .open(project.getCode())
+                .open(sourceProject)
                 .editProject(project2);
         return this;
     }

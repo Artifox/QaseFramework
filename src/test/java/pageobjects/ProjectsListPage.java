@@ -41,25 +41,25 @@ public class ProjectsListPage extends BasePage {
         return this;
     }
 
-    public DeleteConfirmationPage findProjectAndPressDeleteButton(Project project) {
-        findProjectAndPressThreeDotsButton(project);
-        $x(String.format(deleteDropdownOption, project.getName())).click();
+    public DeleteConfirmationPage findProjectAndPressDeleteButton(String projectName) {
+        findProjectAndPressThreeDotsButton(projectName);
+        $x(String.format(deleteDropdownOption, projectName)).click();
         return new DeleteConfirmationPage();
     }
 
-    public RepositoryPage openProject(Project project) {
-        $x(String.format(projectNameLabel, project.getName())).click();
+    public RepositoryPage openProject(String projectName) {
+        $x(String.format(projectNameLabel, projectName)).click();
         return new RepositoryPage();
     }
 
-    public void findProjectAndPressSettingsButton(Project project) {
-        findProjectAndPressThreeDotsButton(project);
-        $x(String.format(deleteDropdownOption, project.getName())).click();
+    public void findProjectAndPressSettingsButton(String projectName) {
+        findProjectAndPressThreeDotsButton(projectName);
+        $x(String.format(deleteDropdownOption, projectName)).click();
 
     }
 
-    public ProjectsListPage findProjectAndPressThreeDotsButton(Project project) {
-        $x(String.format(threeDotsButton, project.getName())).click();
+    public ProjectsListPage findProjectAndPressThreeDotsButton(String projectName) {
+        $x(String.format(threeDotsButton, projectName)).click();
         return this;
     }
 }

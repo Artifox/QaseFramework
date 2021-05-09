@@ -11,7 +11,7 @@ import wrappers.TextArea;
 
 import static com.codeborne.selenide.Selenide.$x;
 
-public class ProjectSettingsPage extends BasePage{
+public class ProjectSettingsPage extends BasePage {
     private SelenideElement settingsLabel = $x("//*[contains(@class, 'project-settings-tab')]/descendant::h1[text()='Settings']");
 
     @Override
@@ -26,17 +26,24 @@ public class ProjectSettingsPage extends BasePage{
         return null;
     }
 
-    public ProjectSettingsPage open(String projectCode){
+    public ProjectSettingsPage open(String projectCode) {
         Selenide.open("/project/" + projectCode + "/settings/general");
         return this;
     }
 
-    public ProjectSettingsPage editProject(Project project){
+    public ProjectSettingsPage editProject(Project project) {
         new Input("Project name").clear().write(project.getName());
         new Input("Project Code").clear().write(project.getCode());
         new TextArea("Description").clear().write(project.getDescription());
         new RadioButton(project.getAccessType()).setRadioButton();
         new Button("Update settings").click();
         return this;
+    }
+
+    public void validateProjectSettings(Project project) {
+        new Input("Project name").shouldHave(project.getName());
+        new Input("Project Code").shouldHave(project.getCode());
+        new TextArea("Description").shouldHave(project.getDescription());
+        new RadioButton(project.getAccessType()).shouldBe(Condition.selected);
     }
 }

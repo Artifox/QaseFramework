@@ -1,11 +1,10 @@
 package pageobjects;
 
-import com.codeborne.selenide.Condition;
 import wrappers.Button;
 
 import static com.codeborne.selenide.Condition.visible;
 
-public class DeleteConfirmationPage extends BasePage{
+public class DeleteConfirmationPage extends BasePage {
 
     @Override
     public DeleteConfirmationPage isOpened() {

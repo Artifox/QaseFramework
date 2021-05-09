@@ -2,7 +2,6 @@ package pageobjects;
 
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Selenide;
-import steps.RepositorySteps;
 import wrappers.Button;
 
 import static com.codeborne.selenide.Selenide.$x;
@@ -20,7 +19,7 @@ public class RepositoryPage extends BasePage {
 
     public RepositoryPage open(String name) {
         Selenide.open("/project/" + name);
-        return null;
+        return this;
     }
 
     @Deprecated

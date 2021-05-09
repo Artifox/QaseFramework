@@ -3,25 +3,19 @@ package tests;
 import models.Project;
 import models.Suite;
 import org.testng.annotations.Test;
+import utils.ProjectFactory;
+import utils.SuiteFactory;
 
 import static models.RadioButtonOptions.CreateNewProjectOptions.PRIVATE;
 
 public class RepositoryTest extends BaseTest {
 
     @Test
-    public void suiteShouldBeCreated(){
-        Project project = Project.builder()
-                .name(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .code(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .description(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .accessType(PRIVATE)
-                .build();
-
-        Suite suite = Suite.builder()
-                .name(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .description(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .preconditions(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .build();
+    public void suiteShouldBeCreated() {
+        ProjectFactory projectFactory = new ProjectFactory();
+        SuiteFactory suiteFactory = new SuiteFactory();
+        Project project = projectFactory.getProject();
+        Suite suite = suiteFactory.getSuite();
 
         loginSteps
                 .login(EMAIL, PASSWORD);
@@ -29,10 +23,10 @@ public class RepositoryTest extends BaseTest {
                 .createNewProject(project);
         repositorySteps
                 .createNewSuite(suite);
-                //.validateIsSuiteCreated(suite);
+        //TODO: .validateIsSuiteCreated(suite);
     }
 
-    public void caseShouldBeCreated(){
+    public void caseShouldBeCreated() {
     }
 
 }
