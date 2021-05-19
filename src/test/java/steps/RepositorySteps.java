@@ -16,4 +16,17 @@ public class RepositorySteps {
                 .createNewSuite(suite);
         return this;
     }
+
+    public RepositorySteps validateSuiteFields(Suite suite) {
+        repositoryPage
+                .validateSuiteFields(suite);
+        return this;
+    }
+
+    public RepositorySteps deleteSuite(String suiteName) {
+        repositoryPage
+                .deleteSuite(suiteName)
+                .confirmDeleting();
+        return this;
+    }
 }

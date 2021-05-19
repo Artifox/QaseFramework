@@ -33,9 +33,9 @@ public class ProjectsSteps {
     }*/
 
     @Step
-    public ProjectsSteps validateProjectFields(String sourceProject, Project project) {
+    public ProjectsSteps validateProjectFields(Project project) {
         projectSettingsPage
-                .open(sourceProject)
+                .open(project.getCode())
                 .validateProjectSettings(project);
         return this;
     }
