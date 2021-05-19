@@ -12,7 +12,7 @@ import static com.codeborne.selenide.Selenide.$x;
 public class SuiteModal extends BaseModalPage {
 
     private SelenideElement createSuiteLabel = $x("//*[contains(text(),'Create suite')]");
-    private SelenideElement createButton = $("#save-suite-button");
+    private SelenideElement saveSuiteButton = $("#save-suite-button");
 
     @Override
     public SuiteModal isOpened() {
@@ -21,10 +21,27 @@ public class SuiteModal extends BaseModalPage {
     }
 
     public RepositoryPage createNewSuite(Suite suite) {
-        new Input("Suite name").write(suite.getName());
-        new MirrorInput("Description").write(suite.getDescription());
-        new MirrorInput("Preconditions").write(suite.getPreconditions());
-        createButton.click();
+        fillSuiteFields(suite);
+        saveSuiteButton.click();
         return new RepositoryPage();
+    }
+
+    public RepositoryPage updateSuite(Suite suite) {
+        return createNewSuite(suite);
+    }
+
+    private void fillSuiteFields(Suite suite) {
+        try {
+            Thread.sleep(500);
+            new Input("Suite name").clear().write(suite.getName());
+            Thread.sleep(500);
+            new MirrorInput("Description").clear().write(suite.getDescription());
+            Thread.sleep(500);
+            new MirrorInput("Preconditions").clear().write(suite.getPreconditions());
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
     }
 }

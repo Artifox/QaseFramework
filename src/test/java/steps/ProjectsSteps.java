@@ -22,15 +22,6 @@ public class ProjectsSteps {
                 .createNewProject(project);
         return this;
     }
-    //TODO: Instead of that method validaterojectFields() has been implemented below
-    // Remove after approving
-   /* @Step
-    public ProjectsSteps validateIsProjectCreated(Project project) {
-        projectsListPage
-                .open()
-                .isProjectExist(project);
-        return this;
-    }*/
 
     @Step
     public ProjectsSteps validateProjectFields(Project project) {
@@ -54,6 +45,12 @@ public class ProjectsSteps {
         projectSettingsPage
                 .open(sourceProject)
                 .editProject(project2);
+        return this;
+    }
+
+    public ProjectsSteps isProjectDeleted(String projectName) {
+        projectsListPage
+                .isProjectDeleted(projectName);
         return this;
     }
 }

@@ -14,8 +14,8 @@ public class DeleteConfirmationPage extends BasePage {
 
     @Deprecated
     @Override
-    public BasePage open() {
-        return null;
+    public BasePage open() throws Exception {
+        throw new Exception("You are using deprecated method");
     }
 
     public ProjectsListPage confirmDeleting() {

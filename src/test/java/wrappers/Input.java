@@ -14,6 +14,11 @@ public class Input {
     }
 
     public Input write(String text) {
+        try {
+            Thread.sleep(500);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
         $x(String.format(locator, label)).shouldBe(visible).sendKeys(text);
         return this;
     }

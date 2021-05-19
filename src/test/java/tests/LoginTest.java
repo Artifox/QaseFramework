@@ -9,10 +9,4 @@ public class LoginTest extends BaseTest {
         loginSteps
                 .login(EMAIL, PASSWORD);
     }
-
-    /*@Test
-    public void failTest() {
-        loginSteps.login(EMAIL, PASSWORD);
-        Assert.fail();
-    }*/
 }
