@@ -13,6 +13,11 @@ public class RepositoryPage extends BasePage {
     private String suiteNameLabel = "//a[@class='suite-header-title' and contains(text(),'%s')]";
     private String suiteDescription = "//*[@class='suite-description']/child::p[contains(text(),'%s')]";
     private String suiteDeleteButton = "//*[@class='suite-header-title' and contains(text(),'%s')]/following-sibling::button/i[contains(@class, 'fa-trash')]";
+    private String suiteEditButton = "//*[@class='suite-header-title' and contains(text(),'%s')]/following-sibling::button/i[contains(@class, 'fa-pencil-alt')]";
+    private String aCaseNameLabel = "//*[contains(text(),'%s')]";
+    private String editCaseButton = "//*[contains(@title,'Edit case')]";
+    private String deleteCaseButton = "//*[contains(@title,'Delete case')]";
+    private String confirmDeleteCaseButton = "//*[contains(@class,'modal-footer')]/*[contains(text(),'Delete')]";
 
 
     public RepositoryPage isOpened(String projectName) {
@@ -34,13 +39,8 @@ public class RepositoryPage extends BasePage {
 
     @Deprecated
     @Override
-    public RepositoryPage open() {
-        try {
-            throw new Exception("This method is deprecated");
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        return null;
+    public RepositoryPage open() throws Exception {
+        throw new Exception("You are using deprecated method");
     }
 
     public SuiteModal clickCreateNewSuiteButton() {
@@ -61,12 +61,55 @@ public class RepositoryPage extends BasePage {
 
     public RepositoryPage deleteSuite(String suiteName) {
         hoverOnSuiteName(suiteName);
-        $x(String.format(suiteDeleteButton,suiteName)).click();
+        $x(String.format(suiteDeleteButton, suiteName)).click();
         return this;
     }
 
-    public RepositoryPage confirmDeleting() {
+    public RepositoryPage confirmDeletingSuite() {
         new Button("Delete suite").click();
+        return this;
+    }
+
+    public RepositoryPage confirmDeletingCase() {
+        $x(confirmDeleteCaseButton).click();
+        return this;
+    }
+
+    public SuiteModal clickEditSuiteButton(String suiteName) {
+        hoverOnSuiteName(suiteName);
+        $x(String.format(suiteEditButton, suiteName)).click();
+        return new SuiteModal();
+    }
+
+    public CreateNewCasePage clickCreateNewCaseButton() {
+        new Button("Create new case").click();
+        return new CreateNewCasePage();
+    }
+
+    public CreateNewCasePage clickEditCaseButton(String caseName) {
+        clickOnCaseName(caseName);
+        $x(editCaseButton).click();
+        return new CreateNewCasePage();
+    }
+
+    private RepositoryPage clickOnCaseName(String caseName) {
+        $x(String.format(aCaseNameLabel, caseName)).click();
+        return this;
+    }
+
+    public RepositoryPage deleteCase(String caseName) {
+        clickOnCaseName(caseName);
+        $x(deleteCaseButton).click();
+        return this;
+    }
+
+    public RepositoryPage isSuiteDeleted(String suiteName) {
+        $x(String.format(suiteNameLabel, suiteName)).shouldNotBe(Condition.visible);
+        return this;
+    }
+
+    public RepositoryPage isCaseDeleted(String caseName) {
+        $x(String.format(aCaseNameLabel, caseName)).shouldNotBe(Condition.visible);
         return this;
     }
 }

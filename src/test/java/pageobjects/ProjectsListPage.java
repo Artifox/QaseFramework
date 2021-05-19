@@ -62,4 +62,9 @@ public class ProjectsListPage extends BasePage {
         $x(String.format(threeDotsButton, projectName)).click();
         return this;
     }
+
+    public ProjectsListPage isProjectDeleted(String projectName) {
+        $x(String.format(projectNameLabel, projectName)).shouldNotBe(Condition.visible);
+        return this;
+    }
 }
