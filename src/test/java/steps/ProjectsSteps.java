@@ -32,10 +32,11 @@ public class ProjectsSteps {
     }
 
     @Step
-    public ProjectsSteps deleteProject(String projectName) {
-        projectsListPage
-                .open()
-                .findProjectAndPressDeleteButton(projectName)
+    public ProjectsSteps deleteProject(String projectCode) {
+        projectSettingsPage
+                .open(projectCode)
+                .clickDeleteProjectButton()
+                //.findProjectAndPressDeleteButton(projectName)
                 .confirmDeleting();
         return this;
     }
