@@ -14,7 +14,7 @@ public class ProjectsSteps {
         projectSettingsPage = new ProjectSettingsPage();
     }
 
-    @Step("Create a project: {project.code}")
+    @Step("Create '{project.code}' project")
     public ProjectsSteps createNewProject(Project project) {
         projectsListPage
                 .open()

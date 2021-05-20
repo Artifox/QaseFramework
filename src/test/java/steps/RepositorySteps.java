@@ -45,7 +45,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Creating a new case: {aCase.title}")
+    @Step("Creating '{aCase.title}' case")
     public RepositorySteps createNewCaseWithoutSuite(Case aCase) {
         repositoryPage
                 .clickCreateNewCaseButton()
@@ -53,7 +53,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Updating case 'caseName' with new fields")
+    @Step("Updating case '{caseName}' with new fields")
     public RepositorySteps updateCase(String caseName, Case aCase) {
         repositoryPage
                 .clickEditCaseButton(caseName)
@@ -61,7 +61,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Validating fields of case: 'caseName'")
+    @Step("Validating fields of case: '{caseName}'")
     public RepositorySteps validateCaseFields(String caseName, Case aCase) {
         repositoryPage
                 .clickEditCaseButton(caseName)
@@ -69,7 +69,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Deleting case: 'caseName'")
+    @Step("Deleting '{caseName}' case")
     public RepositorySteps deleteCase(String caseName) {
         repositoryPage
                 .deleteCase(caseName)
@@ -84,7 +84,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Verifying is 'caseName' case deleted")
+    @Step("Verifying is '{caseName}' case deleted")
     public RepositorySteps isCaseDeleted(String caseName) {
         repositoryPage
                 .isCaseDeleted(caseName);
