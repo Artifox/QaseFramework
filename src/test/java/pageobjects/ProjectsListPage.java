@@ -32,12 +32,12 @@ public class ProjectsListPage extends BasePage {
     }
 
     public ProjectsListPage isProjectExist(Project project) {
-        $x(String.format(projectNameLabel, project.getName())).shouldBe(Condition.visible);
+        $x(String.format(projectNameLabel, project.getTitle())).shouldBe(Condition.visible);
         return this;
     }
 
     public ProjectsListPage isProjectNotExist(Project project) {
-        $x(String.format(projectNameLabel, project.getName())).shouldNotBe(Condition.visible);
+        $x(String.format(projectNameLabel, project.getTitle())).shouldNotBe(Condition.visible);
         return this;
     }
 

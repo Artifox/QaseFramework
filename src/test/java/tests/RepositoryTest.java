@@ -22,10 +22,10 @@ public class RepositoryTest extends BaseTest {
                 .createNewProject(project);
         repositorySteps
                 .createNewSuite(suite)
-                .updateSuite(suite.getName(), suite2)
+                .updateSuite(suite.getTitle(), suite2)
                 .validateSuiteFields(suite2)
-                .deleteSuite(suite2.getName())
-                .isSuiteDeleted(suite2.getName());
+                .deleteSuite(suite2.getTitle())
+                .isSuiteDeleted(suite2.getTitle());
     }
 
     @Test

@@ -32,18 +32,18 @@ public class ProjectSettingsPage extends BasePage {
     }
 
     public ProjectSettingsPage editProject(Project project) {
-        new Input("Project name").clear().write(project.getName());
+        new Input("Project name").clear().write(project.getTitle());
         new Input("Project Code").clear().write(project.getCode());
         new TextArea("Description").clear().write(project.getDescription());
-        new RadioButton(project.getAccessType()).setRadioButton();
+        new RadioButton(project.getAccess()).setRadioButton();
         new Button("Update settings").click();
         return this;
     }
 
     public void validateProjectSettings(Project project) {
-        new Input("Project name").shouldHave(project.getName());
+        new Input("Project name").shouldHave(project.getTitle());
         new Input("Project Code").shouldHave(project.getCode());
         new TextArea("Description").shouldHave(project.getDescription());
-        new RadioButton(project.getAccessType()).shouldBe(Condition.selected);
+        new RadioButton(project.getAccess()).shouldBe(Condition.selected);
     }
 }

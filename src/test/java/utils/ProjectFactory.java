@@ -17,10 +17,10 @@ public class ProjectFactory {
         faker = new Faker();
         String accessType = faker.options().option("private", "public");
         Project project = Project.builder()
-                .name(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .code(fakeValuesService.regexify("[A-Z1-9]{5}"))
+                .title(fakeValuesService.regexify("[a-z1-9]{10}"))
+                .code(fakeValuesService.regexify("[A-Z]{5}"))
                 .description(fakeValuesService.regexify("[a-z1-9]{10}"))
-                .accessType(accessType)
+                .access(accessType)
                 .build();
         return project;
     }
