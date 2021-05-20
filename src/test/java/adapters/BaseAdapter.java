@@ -49,8 +49,8 @@ public class BaseAdapter {
                 extract().body().asString();
     }
 
-    public void checkStatus(String response) {
+    public void checkStatus(String response, boolean expectedResult) {
         APIResponse apiResponse = gson.fromJson(response, APIResponse.class);
-        Assert.assertTrue(apiResponse.isStatus(), "Response status is not correct");
+        Assert.assertEquals(apiResponse.isStatus(), expectedResult, "Response status is not correct");
     }
 }

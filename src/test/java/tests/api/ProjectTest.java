@@ -8,11 +8,14 @@ import utils.ProjectFactory;
 public class ProjectTest {
 
     @Test
-    public void createProject() {
+    public void createAdnDeleteProject() {
         ProjectFactory projectFactory = new ProjectFactory();
         Project project = projectFactory.getProject();
+
         ProjectAdapter projectAdapter = new ProjectAdapter();
-        projectAdapter.post(project);
-        projectAdapter.get(project.getCode());
+        projectAdapter.post(project, true);
+        projectAdapter.get(project, 200, true);
+        projectAdapter.delete(project.getCode(), true);
+        projectAdapter.get(project, 404, false);
     }
 }

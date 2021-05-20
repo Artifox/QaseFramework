@@ -7,6 +7,6 @@ public class SuiteAdapter extends BaseAdapter {
 
     public void post(Suite suite, String projectName) {
         String resp = post(gson.toJson(suite), URI + "/" + projectName, 200);
-        checkStatus(resp);
+        //checkStatus(resp);
     }
 }
