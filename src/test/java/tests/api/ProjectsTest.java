@@ -5,7 +5,7 @@ import models.Project;
 import org.testng.annotations.Test;
 import utils.ProjectFactory;
 
-public class ProjectTest {
+public class ProjectsTest {
 
     @Test
     public void createAndDeleteProject() {

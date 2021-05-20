@@ -18,7 +18,7 @@ public class ProjectAdapter extends BaseAdapter {
         checkStatus(response, expectedResult);
     }
 
-    @Step("Delete project by project code: {project.code}")
+    @Step("Delete project: {project.title}")
     public void delete(Project project, boolean expectedResult) {
         String response = delete(URI + "/" + project.getCode(), 200);
         checkStatus(response, expectedResult);

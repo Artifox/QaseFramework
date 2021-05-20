@@ -14,7 +14,7 @@ public class RepositorySteps {
         repositoryPage = new RepositoryPage();
     }
 
-    @Step
+    @Step("Creating a new suite: {suite.title}")
     public RepositorySteps createNewSuite(Suite suite) {
         repositoryPage
                 .clickCreateNewSuiteButton()
@@ -22,14 +22,14 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step
+    @Step("Validating fields of suite: {suite.title}")
     public RepositorySteps validateSuiteFields(Suite suite) {
         repositoryPage
                 .validateSuiteFields(suite);
         return this;
     }
 
-    @Step
+    @Step("Deleting suite: 'suiteName'")
     public RepositorySteps deleteSuite(String suiteName) {
         repositoryPage
                 .deleteSuite(suiteName)
@@ -37,7 +37,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step
+    @Step("Updating suite 'suiteName' with new fields")
     public RepositorySteps updateSuite(String suiteName, Suite suite) {
         repositoryPage
                 .clickEditSuiteButton(suiteName)
@@ -45,7 +45,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step
+    @Step("Creating a new case: {aCase.title}")
     public RepositorySteps createNewCaseWithoutSuite(Case aCase) {
         repositoryPage
                 .clickCreateNewCaseButton()
@@ -53,6 +53,7 @@ public class RepositorySteps {
         return this;
     }
 
+    @Step("Updating case 'caseName' with new fields")
     public RepositorySteps updateCase(String caseName, Case aCase) {
         repositoryPage
                 .clickEditCaseButton(caseName)
@@ -60,6 +61,7 @@ public class RepositorySteps {
         return this;
     }
 
+    @Step("Validating fields of case: 'caseName'")
     public RepositorySteps validateCaseFields(String caseName, Case aCase) {
         repositoryPage
                 .clickEditCaseButton(caseName)
@@ -67,6 +69,7 @@ public class RepositorySteps {
         return this;
     }
 
+    @Step("Deleting case: 'caseName'")
     public RepositorySteps deleteCase(String caseName) {
         repositoryPage
                 .deleteCase(caseName)
@@ -74,12 +77,14 @@ public class RepositorySteps {
         return this;
     }
 
+    @Step("Verifying is 'suiteName' suite deleted")
     public RepositorySteps isSuiteDeleted(String suiteName) {
         repositoryPage
                 .isSuiteDeleted(suiteName);
         return this;
     }
 
+    @Step("Verifying is 'caseName' case deleted")
     public RepositorySteps isCaseDeleted(String caseName) {
         repositoryPage
                 .isCaseDeleted(caseName);
