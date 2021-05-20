@@ -4,14 +4,19 @@
     <listeners>
         <listener class-name="utils.AnnotationTransformer"/>
     </listeners>
-    <test name="test1">
+    <test name="ProjectsTest">
         <classes>
             <class name="tests.ProjectsTest"/>
         </classes>
     </test> <!-- Test -->
-    <test name="test2">
+    <test name="RepositoryTest">
         <classes>
             <class name="tests.RepositoryTest"/>
+        </classes>
+    </test>
+    <test name="APITests">
+        <classes>
+            <class name="tests.api.ProjectsTest"/>
         </classes>
     </test>
 </suite>

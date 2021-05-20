@@ -49,7 +49,7 @@ public class RepositoryPage extends BasePage {
     }
 
     public RepositoryPage validateSuiteFields(Suite suite) {
-        $x(String.format(suiteNameLabel, suite.getName())).shouldHave(Condition.exactText(suite.getName()));
+        $x(String.format(suiteNameLabel, suite.getTitle())).shouldHave(Condition.exactText(suite.getTitle()));
         $x(String.format(suiteDescription, suite.getDescription())).shouldHave(Condition.exactText(suite.getDescription()));
         return this;
     }

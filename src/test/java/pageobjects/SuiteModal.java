@@ -33,7 +33,7 @@ public class SuiteModal extends BaseModalPage {
     private void fillSuiteFields(Suite suite) {
         try {
             Thread.sleep(500);
-            new Input("Suite name").clear().write(suite.getName());
+            new Input("Suite name").clear().write(suite.getTitle());
             Thread.sleep(500);
             new MirrorInput("Description").clear().write(suite.getDescription());
             Thread.sleep(500);

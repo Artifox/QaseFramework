@@ -8,8 +8,9 @@ import lombok.Data;
 @AllArgsConstructor
 @Builder
 public class Project {
-    String name;
+    String title;
     String code;
     String description;
-    String accessType;
+    String access;
+    String group;
 }

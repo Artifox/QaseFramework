@@ -14,7 +14,7 @@ public class ProjectsSteps {
         projectSettingsPage = new ProjectSettingsPage();
     }
 
-    @Step
+    @Step("Create '{project.code}' project")
     public ProjectsSteps createNewProject(Project project) {
         projectsListPage
                 .open()
@@ -23,7 +23,7 @@ public class ProjectsSteps {
         return this;
     }
 
-    @Step
+    @Step("Validating fields of project: {project.code}")
     public ProjectsSteps validateProjectFields(Project project) {
         projectSettingsPage
                 .open(project.getCode())
@@ -31,16 +31,16 @@ public class ProjectsSteps {
         return this;
     }
 
-    @Step
-    public ProjectsSteps deleteProject(String projectName) {
-        projectsListPage
-                .open()
-                .findProjectAndPressDeleteButton(projectName)
+    @Step("Deleting project: '{projectCode}'")
+    public ProjectsSteps deleteProject(String projectCode) {
+        projectSettingsPage
+                .open(projectCode)
+                .clickDeleteProjectButton()
                 .confirmDeleting();
         return this;
     }
 
-    @Step
+    @Step("Updating project '{sourceProject}' with new fields")
     public ProjectsSteps updateProject(String sourceProject, Project project2) {
         projectSettingsPage
                 .open(sourceProject)
@@ -48,6 +48,7 @@ public class ProjectsSteps {
         return this;
     }
 
+    @Step("Validating is project deleted")
     public ProjectsSteps isProjectDeleted(String projectName) {
         projectsListPage
                 .isProjectDeleted(projectName);

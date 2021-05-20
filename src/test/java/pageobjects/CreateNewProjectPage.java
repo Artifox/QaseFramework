@@ -24,10 +24,10 @@ public class CreateNewProjectPage extends BasePage {
     }
 
     public RepositoryPage createNewProject(Project project) {
-        new Input("Project name").write(project.getName());
+        new Input("Project name").write(project.getTitle());
         new Input("Project Code").clear().write(project.getCode());
         new TextArea("Description").write(project.getDescription());
-        new RadioButton(project.getAccessType()).setRadioButton();
+        new RadioButton(project.getAccess()).setRadioButton();
         new Button("Create project").click();
         return new RepositoryPage();
     }
