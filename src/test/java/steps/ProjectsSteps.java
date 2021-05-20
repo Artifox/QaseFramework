@@ -31,17 +31,16 @@ public class ProjectsSteps {
         return this;
     }
 
-    @Step("Deleting project: 'projectCode'")
+    @Step("Deleting project: '{projectCode}'")
     public ProjectsSteps deleteProject(String projectCode) {
         projectSettingsPage
                 .open(projectCode)
                 .clickDeleteProjectButton()
-                //.findProjectAndPressDeleteButton(projectName)
                 .confirmDeleting();
         return this;
     }
 
-    @Step("Updating project 'sourceProject' with new fields")
+    @Step("Updating project '{sourceProject}' with new fields")
     public ProjectsSteps updateProject(String sourceProject, Project project2) {
         projectSettingsPage
                 .open(sourceProject)

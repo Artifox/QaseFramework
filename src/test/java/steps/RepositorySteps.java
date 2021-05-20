@@ -3,12 +3,10 @@ package steps;
 import io.qameta.allure.Step;
 import models.Case;
 import models.Suite;
-import pageobjects.CreateNewCasePage;
 import pageobjects.RepositoryPage;
 
 public class RepositorySteps {
     RepositoryPage repositoryPage;
-    CreateNewCasePage createNewCasePage;
 
     public RepositorySteps() {
         repositoryPage = new RepositoryPage();
@@ -29,7 +27,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Deleting suite: 'suiteName'")
+    @Step("Deleting suite: '{suiteName}'")
     public RepositorySteps deleteSuite(String suiteName) {
         repositoryPage
                 .deleteSuite(suiteName)
@@ -37,7 +35,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Updating suite 'suiteName' with new fields")
+    @Step("Updating suite '{suiteName}' with new fields")
     public RepositorySteps updateSuite(String suiteName, Suite suite) {
         repositoryPage
                 .clickEditSuiteButton(suiteName)
@@ -77,7 +75,7 @@ public class RepositorySteps {
         return this;
     }
 
-    @Step("Verifying is 'suiteName' suite deleted")
+    @Step("Verifying is '{suiteName}' suite deleted")
     public RepositorySteps isSuiteDeleted(String suiteName) {
         repositoryPage
                 .isSuiteDeleted(suiteName);
