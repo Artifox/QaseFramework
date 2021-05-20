@@ -14,4 +14,9 @@
             <class name="tests.RepositoryTest"/>
         </classes>
     </test>
+    <test name="APITests">
+        <classes>
+            <class name="tests.api.ProjectTest"/>
+        </classes>
+    </test>
 </suite>
