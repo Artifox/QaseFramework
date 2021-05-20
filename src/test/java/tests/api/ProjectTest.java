@@ -8,7 +8,7 @@ import utils.ProjectFactory;
 public class ProjectTest {
 
     @Test
-    public void createAdnDeleteProject() {
+    public void createAndDeleteProject() {
         ProjectFactory projectFactory = new ProjectFactory();
         Project project = projectFactory.getProject();
 
