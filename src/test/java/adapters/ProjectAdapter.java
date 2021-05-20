@@ -1,5 +1,6 @@
 package adapters;
 
+import io.qameta.allure.Step;
 import models.Project;
 
 public class ProjectAdapter extends BaseAdapter {
@@ -10,6 +11,7 @@ public class ProjectAdapter extends BaseAdapter {
         checkStatus(response, expectedResult);
     }
 
+    @Step("Get request to {URI}/{project.getCode()}")
     public void get(Project project, int status, boolean expectedResult) {
         String response = get(URI + "/" + project.getCode(), status);
         checkStatus(response, expectedResult);
