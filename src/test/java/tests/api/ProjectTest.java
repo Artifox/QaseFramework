@@ -15,7 +15,7 @@ public class ProjectTest {
         ProjectAdapter projectAdapter = new ProjectAdapter();
         projectAdapter.post(project, true);
         projectAdapter.get(project, 200, true);
-        projectAdapter.delete(project.getCode(), true);
+        projectAdapter.delete(project, true);
         projectAdapter.get(project, 404, false);
     }
 }
